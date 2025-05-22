@@ -86,7 +86,8 @@
       formData = new FormData();
       formData.append('file_pdf', file); // 'file_pdf' must match the name expected in FastAPI
       
-      const analyzeRes = await fetch('http://localhost:8000/analyze', {
+      // const analyzeRes = await fetch('http://localhost:8000/analyze', {
+      const analyzeRes = await fetch('https://api-ai-contract-review.onrender.com/analyze', {
         method: 'POST',
         headers: {
           'x-api-key': $user.api_key
