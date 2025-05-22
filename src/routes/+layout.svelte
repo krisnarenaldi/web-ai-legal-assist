@@ -85,6 +85,22 @@
 	});
 </script>
 
+<svelte:head>
+	<title>AI Contract Review & Legal Assistant</title>
+	<meta name="description" content="AI-powered contract review and legal assistant that helps you analyze, understand, and manage legal documents quickly and securely. Get instant insights, risk detection, and answers to your legal questions with advanced AI." />
+	<!-- Google Tag Manager -->
+	<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+	new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+	j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+	'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+	})(window,document,'script','dataLayer','GTM-6QTHY8DL9S');</script>
+	<!-- End Google Tag Manager -->
+</svelte:head>
+
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-6QTHY8DL9S"
+height="0" width="0" style="display:none;visibility:hidden" title="Google Tag Manager"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
 <div class="layout-wrapper">
 	<nav class="navbar">
 		<div class="nav-left">
