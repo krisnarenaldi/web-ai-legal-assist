@@ -7,11 +7,11 @@
 	import { credit, fetchCredit } from '$lib/stores/credit.js';
 	import { supabase } from '$lib/supabaseClient.js';
 	import { onMount } from 'svelte';
-	
+
 	// Get the data from the load function using $props() instead of export let
 	let { data, children } = $props();
 	const { ogTags } = data;
-	
+
 	async function logout() {
 		await supabase.auth.signOut();
 		user.set({ isLoggedIn: false, firstName: '', uuid: null, api_key: null });
@@ -91,7 +91,7 @@
 <svelte:head>
 	<title>{ogTags.title}</title>
 	<meta name="description" content={ogTags.description} />
-	
+
 	<!-- Open Graph / Facebook -->
 	<meta property="og:type" content="website" />
 	<meta property="og:url" content={ogTags.url} />
@@ -100,14 +100,14 @@
 	<meta property="og:image" content={ogTags.image} />
 	<meta property="og:image:width" content="1200" />
 	<meta property="og:image:height" content="630" />
-	
+
 	<!-- Twitter -->
 	<meta property="twitter:card" content="summary_large_image" />
 	<meta property="twitter:url" content={ogTags.url} />
 	<meta property="twitter:title" content={ogTags.title} />
 	<meta property="twitter:description" content={ogTags.description} />
 	<meta property="twitter:image" content={ogTags.image} />
-	
+
 	<!-- Google Tag Manager -->
 	<script>
 		(function (w, d, s, l, i) {
@@ -280,17 +280,17 @@
 
 	.welcome-user {
 		font-size: 0.8rem; /* 2px smaller than default (assume default is 1.125rem) */
-		color: #fff; /* Changed from #b4b4b4 to white */
+		color: #808080; /* Changed from #b4b4b4 to white */
 		margin-right: 1rem;
 		text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2); /* Add text shadow */
 	}
 
 	.nav-btn {
-		border: 1px solid rgba(255, 255, 255, 0.5); /* Made border semi-transparent white */
+		border: 1px solid rgba(128, 130, 128, 0.5); /* Made border semi-transparent white */
 		border-radius: 4px;
 		padding: 0.4em 1em;
 		background: rgba(255, 255, 255, 0.1); /* Semi-transparent white background */
-		color: #fff; /* Changed to white */
+		color: #808080; /* Changed to white */
 		font: inherit;
 		cursor: pointer;
 		transition:

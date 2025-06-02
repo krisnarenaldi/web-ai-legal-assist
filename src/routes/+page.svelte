@@ -22,7 +22,7 @@
 		'/pexels-carlos-oliva-1966452-3586966.jpg',
 		'/pexels-karoldach-409696.jpg',
 		'/pexels-lastly-937782.jpg',
-		'/pexels-nikitapishchugin-32055930.jpg',
+		'pexels-thatguycraig000-1563355.jpg',
 		'/pexels-goumbik-317385.jpg'
 	];
 	let bgImage = bgImages[0];
@@ -335,7 +335,7 @@
 		class="mt-8 mb-4 flex w-full max-w-3xl flex-col items-center rounded-3xl border-2 border-gray-700 bg-gray-900 p-8 shadow-xl"
 	>
 		<h2 class="mb-4 text-center text-3xl font-extrabold text-blue-200 drop-shadow">
-			Content Review App
+			Contract Review App
 		</h2>
 		<label
 			class="mb-4 flex w-full cursor-pointer flex-col items-center rounded-xl border-2 border-gray-700 bg-gray-900 px-4 py-6 tracking-wide shadow transition hover:bg-gray-900"
@@ -365,7 +365,10 @@
 
 		{#if creditValue === 0}
 			<div class="mt-2 w-full animate-pulse text-center font-semibold text-yellow-400">
-				You have no credits left. Please top up to submit a document.
+				You have no credits left. Please top up to submit a document. You can donate via <a
+					href="https://saweria.co/papaloni"
+					class="text-xl text-[#00A67E] hover:text-[#008F6B]">Saweria</a
+				> for Rp 15.000 minimum (Rp 15.000 = 1 credit).
 			</div>
 		{/if}
 		{#if error}
