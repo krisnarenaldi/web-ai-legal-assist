@@ -8,12 +8,10 @@
 	import { supabase } from '$lib/supabaseClient.js';
 	import { onMount } from 'svelte';
 	
-	// Get the data from the load function
-	export let data;
+	// Get the data from the load function using $props() instead of export let
+	let { data, children } = $props();
 	const { ogTags } = data;
 	
-	let { children } = $props();
-
 	async function logout() {
 		await supabase.auth.signOut();
 		user.set({ isLoggedIn: false, firstName: '', uuid: null, api_key: null });
