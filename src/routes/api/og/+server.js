@@ -1,4 +1,4 @@
-import { Canvas, loadImage } from 'canvas';
+import { ImageResponse } from '@vercel/og';
 import { error } from '@sveltejs/kit';
 
 /** @type {import('./$types').RequestHandler} */
@@ -7,51 +7,59 @@ export async function GET({ url }) {
 		// Get parameters from URL
 		const title = url.searchParams.get('title') || 'AI Contract Review';
 		const description = url.searchParams.get('description') || 'Analyze legal documents with AI';
-
-		// Create canvas (1200x630 is the recommended size for OG images)
-		const canvas = new Canvas(1200, 630);
-		const ctx = canvas.getContext('2d');
-
-		// Load background image
-		try {
-			const bgImage = await loadImage('static/og-background.jpg');
-			ctx.drawImage(bgImage, 0, 0, 1200, 630);
-		} catch (e) {
-			// If background image fails to load, use a gradient
-			const gradient = ctx.createLinearGradient(0, 0, 1200, 630);
-			gradient.addColorStop(0, '#4285f4');
-			gradient.addColorStop(1, '#34a853');
-			ctx.fillStyle = gradient;
-			ctx.fillRect(0, 0, 1200, 630);
-		}
-
-		// Add semi-transparent overlay for better text readability
-		ctx.fillStyle = 'rgba(0, 0, 0, 0.5)';
-		ctx.fillRect(0, 0, 1200, 630);
-
-		// Add title
-		ctx.font = 'bold 60px Inter, sans-serif';
-		ctx.fillStyle = '#ffffff';
-		ctx.textAlign = 'center';
-		ctx.fillText(title, 600, 300);
-
-		// Add description
-		ctx.font = '30px Inter, sans-serif';
-		ctx.fillText(description, 600, 380);
-
-		// Add logo or branding
-		ctx.font = 'bold 24px Inter, sans-serif';
-		ctx.fillText('AI Contract Review & Legal Assistant', 600, 550);
-
-		// Convert canvas to buffer
-		const buffer = canvas.toBuffer('image/jpeg');
-
-		// Return the image
-		return new Response(buffer, {
-			headers: {
-				'Content-Type': 'image/jpeg',
-				'Cache-Control': 'public, max-age=31536000, immutable'
-			}
+		
+		// Create an HTML template for the OG image
+		const html = `
+			<div style="
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				justify-content: center;
+				width: 100%;
+				height: 100%;
+				background: linear-gradient(to bottom right, #4285f4, #34a853);
+				padding: 40px;
+				text-align: center;
+				color: white;
+				font-family: 'Inter', sans-serif;
+			">
+				<div style="
+					background: rgba(0, 0, 0, 0.5);
+					border-radius: 16px;
+					padding: 32px;
+					width: 90%;
+					height: 90%;
+					display: flex;
+					flex-direction: column;
+					align-items: center;
+					justify-content: center;
+				">
+					<h1 style="
+						font-size: 60px;
+						font-weight: bold;
+						margin: 0 0 20px;
+						line-height: 1.2;
+					">${title}</h1>
+					
+					<p style="
+						font-size: 30px;
+						margin: 0 0 40px;
+						opacity: 0.9;
+					">${description}</p>
+					
+					<div style="
+						font-size: 24px;
+						font-weight: bold;
+						margin-top: auto;
+					">AI Contract Review & Legal Assistant</div>
+				</div>
+			</div>
+		`;
+		
+		// Generate the image response
+		return new ImageResponse(html, {
+			width: 1200,
+			height: 630,
 		});
 	} catch (e) {
 		console.error('Error generating OG image:', e);
